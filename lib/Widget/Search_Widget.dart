@@ -7,11 +7,13 @@ class Search_Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
+      width: 320,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color.fromARGB(255, 10, 9, 90), width: 1),
+        borderRadius: BorderRadius.circular(18),
+        border:
+            Border.all(color: const Color.fromARGB(255, 10, 9, 90), width: 1),
       ),
       child: const Row(
         children: [
@@ -21,7 +23,7 @@ class Search_Widget extends StatelessWidget {
             width: 20,
           ),
           SizedBox(
-            width: 13,
+            width: 9,
           ),
           Text(
             'What do you search for ?',

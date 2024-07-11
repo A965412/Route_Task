@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:routetask/Widget/Row_Widget.dart';
 import 'package:routetask/Widget/Search_Widget.dart';
 
 void main() {
@@ -11,10 +12,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Search_Widget()
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Row_Widget());
   }
 }
-
