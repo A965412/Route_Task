@@ -12,8 +12,7 @@ class Search_Widget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
-        border:
-            Border.all(color: const Color.fromARGB(255, 10, 9, 90), width: 1),
+        border: Border.all(color: Color.fromARGB(255, 1, 0, 65), width: 1.5),
       ),
       child: const Row(
         children: [
