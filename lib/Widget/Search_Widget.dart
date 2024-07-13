@@ -10,9 +10,9 @@ class Search_Widget extends StatelessWidget {
       width: 320,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Color.fromARGB(255, 1, 0, 65), width: 1.5),
+        border: Border.all(color: Color.fromARGB(255, 15, 13, 122), width: 1.2),
       ),
       child: const Row(
         children: [
