@@ -24,6 +24,7 @@ class Search_Widget extends StatelessWidget {
           SizedBox(
             width: 9,
           ),
+
           Text(
             'What do you search for ?',
             style: TextStyle(
