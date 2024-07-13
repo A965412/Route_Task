@@ -6,7 +6,7 @@ class ProductResponseEntity {
       this.skip, 
       this.limit,});
 
-  List<Products>? products;
+  List<ProductsDataEntity>? products;
   num? total;
   num? skip;
   num? limit;
@@ -37,8 +37,8 @@ class ProductResponseEntity {
 /// images : ["https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"]
 /// thumbnail : "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
 
-class Products {
-  Products({
+class ProductsDataEntity {
+  ProductsDataEntity({
       this.id, 
       this.title, 
       this.description, 
@@ -57,7 +57,6 @@ class Products {
       this.reviews, 
       this.returnPolicy, 
       this.minimumOrderQuantity, 
-      this.meta, 
       this.images, 
       this.thumbnail,});
 
@@ -77,10 +76,9 @@ class Products {
   String? warrantyInformation;
   String? shippingInformation;
   String? availabilityStatus;
-  List<Reviews>? reviews;
+  List<ReviewsEntity>? reviews;
   String? returnPolicy;
   num? minimumOrderQuantity;
-  Meta? meta;
   List<String>? images;
   String? thumbnail;
 
@@ -88,25 +86,8 @@ class Products {
 
 }
 
-/// createdAt : "2024-05-23T08:56:21.618Z"
-/// updatedAt : "2024-05-23T08:56:21.618Z"
-/// barcode : "9164035109868"
-/// qrCode : "https://assets.dummyjson.com/public/qr-code.png"
-
-class Meta {
-  Meta({
-      this.createdAt, 
-      this.updatedAt, 
-      this.barcode, 
-      this.qrCode,});
-
-  String? createdAt;
-  String? updatedAt;
-  String? barcode;
-  String? qrCode;
 
 
-}
 
 /// rating : 2
 /// comment : "Very unhappy with my purchase!"
@@ -114,8 +95,8 @@ class Meta {
 /// reviewerName : "John Doe"
 /// reviewerEmail : "john.doe@x.dummyjson.com"
 
-class Reviews {
-  Reviews({
+class ReviewsEntity {
+  ReviewsEntity({
       this.rating, 
       this.comment, 
       this.date, 
