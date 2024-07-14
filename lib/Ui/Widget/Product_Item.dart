@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:routetask/Domain/Entity/ProductResponseEntity.dart';
 
 class Products_Item extends StatelessWidget {
   bool isWishlisted = false;
+  ProductsDataEntity productsdata ; 
+  Products_Item({Key? key, required this.productsdata}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,8 +25,8 @@ class Products_Item extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child: Image.asset(
-                    'assets/images/app_bar_logo.png',
+                  child: Image.network(
+                   productsdata.thumbnail ?? " " , 
                     fit: BoxFit.fill,
                     width: 160,
                     height: 80,
@@ -55,7 +58,7 @@ class Products_Item extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 7),
               child: Text(
-                'ProductName',
+                productsdata.title ?? " ",
                 maxLines: 2,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       fontSize: 16,
@@ -72,7 +75,7 @@ class Products_Item extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "EGP 000",
+                    "EGP ${productsdata.price}",
                     maxLines: 1,
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           fontSize: 14,
@@ -94,7 +97,7 @@ class Products_Item extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "Reviews (12)",
+                    "Reviews (${productsdata.rating})",
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           fontSize: 14,
                           color: const Color.fromARGB(255, 1, 0, 65),
