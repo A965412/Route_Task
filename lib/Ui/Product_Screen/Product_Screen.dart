@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:routetask/Widget/Product_Item.dart';
-import 'package:routetask/Widget/Row_Widget.dart';
+import 'package:routetask/Ui/Widget/Product_Item.dart';
+import 'package:routetask/Ui/Widget/Row_Widget.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
