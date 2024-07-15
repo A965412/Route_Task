@@ -1,124 +1,123 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:routetask/Domain/Entity/ProductResponseEntity.dart';
 
-class Products_Item extends StatelessWidget {
-  bool isWishlisted = false;
-  ProductsDataEntity productsdata ; 
-  Products_Item({Key? key, required this.productsdata}) : super(key: key);
+import '../../Data/Model/ProductsResponse.dart';
+
+class ProductItem extends StatelessWidget {
+  final int index;
+  final Product product;
+
+  const ProductItem({required this.index, required this.product, super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8),
+      padding: EdgeInsets.only(left: 8, right: 8, top: 8),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: const Color.fromARGB(255, 1, 0, 65),
-            width: 1,
-          ),
-        ),
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(width: 2, color: Colors.blueGrey)),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.network(
-                   productsdata.thumbnail ?? " " , 
-                    fit: BoxFit.fill,
-                    width: 160,
-                    height: 80,
-                  ),
-                ),
-                Positioned(
-                  top: 8,
-                  right: 2,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 14,
-                    child: IconButton(
-                      color: const Color.fromARGB(255, 1, 0, 65),
-                      padding: EdgeInsets.zero,
-                      onPressed: () {},
-                      icon: isWishlisted == true
-                          ? const Icon(Icons.favorite_rounded)
-                          : const Icon(
-                              Icons.favorite_border_rounded,
-                            ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 18,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 7),
-              child: Text(
-                productsdata.title ?? " ",
-                maxLines: 2,
-                style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      fontSize: 16,
-                      color: const Color.fromARGB(255, 1, 0, 65),
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
-            ),
-            const SizedBox(
-              height: 18,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Row(
+            Expanded(
+              child: Stack(
                 children: [
-                  Text(
-                    "EGP ${productsdata.price}",
-                    maxLines: 1,
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          fontSize: 14,
-                          color: const Color.fromARGB(255, 1, 0, 65),
-                          fontWeight: FontWeight.w500,
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: product.thumbnail ?? "",
+                      fit: BoxFit.contain,
+                      width: double.infinity,
+                      height: 150,
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error_outline, size: 30),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        padding: EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(25),
+                            border:
+                                Border.all(width: 2, color: Colors.blueGrey)),
+                        child: const Icon(
+                          Icons.favorite_outline,
+                          color: Color(0xff004182),
                         ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
-            const SizedBox(
-              height: 18,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Row(
+            SizedBox(height: 8),
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Reviews (${productsdata.rating})",
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          fontSize: 14,
-                          color: const Color.fromARGB(255, 1, 0, 65),
-                          fontWeight: FontWeight.w500,
+                  Padding(
+                    padding: EdgeInsets.only(left: 8),
+                    child: Text(
+                      product.title ?? "",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(height: 7),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          "EGP ${(product.price!)}",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff004182),
+                              fontSize: 14),
                         ),
+                      ],
+                    ),
                   ),
-                  const SizedBox(
-                    width: 7,
-                  ),
-                  const Image(image: AssetImage('assets/images/stat_icon.png')),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                  const ImageIcon(
-                    size: 24,
-                    AssetImage("assets/images/🦆 icon _plus circle_.png"),
-                    color: Color.fromARGB(255, 15, 46, 109),
-                  ),
+                  SizedBox(height: 13),
+                  Padding(
+                    padding: EdgeInsets.only(left: 8, bottom: 13, right: 8),
+                    child: Row(
+                      children: [
+                        const Text(
+                          "Review",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(width: 4),
+                        Text(
+                          "(${product.rating})",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(width: 4),
+                        const Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        const Spacer(),
+                        ImageIcon(
+                          size: 26,
+                          AssetImage("assets/images/🦆 icon _plus circle_.png"),
+                          color: Color.fromARGB(255, 15, 46, 109),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

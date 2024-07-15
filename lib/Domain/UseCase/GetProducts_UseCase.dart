@@ -1,13 +1,15 @@
 import 'package:dartz/dartz.dart';
-import 'package:routetask/Domain/Entity/Faliuers.dart';
-import 'package:routetask/Domain/Entity/ProductResponseEntity.dart';
+
 import 'package:routetask/Domain/Repo/Products.Repo.dart';
 
-class GetProductsUseCase {
-  ProductsReposatiry productsReposatiry;
-  GetProductsUseCase(this.productsReposatiry);
+import '../../Data/Failuers.dart';
+import '../../Data/Model/ProductsResponse.dart';
 
- Future<Either<Failures, ProductResponseEntity>> invoke() {
-    return productsReposatiry.getProducts();
-  }
+class ProductListUseCase {
+  ProductListRepo productListRepo;
+
+  ProductListUseCase(this.productListRepo);
+
+  Future<Either<Failures, ProductsResponse>> Invoke() =>
+      productListRepo.getProductList();
 }

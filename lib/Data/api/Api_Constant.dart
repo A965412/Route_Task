@@ -1,4 +1,7 @@
 class ApiConstant {
-  static String baseUrl = 'dummyjson.com';
-  static String productEndPoint = '/products';
+  static const baseURl = "https://dummyjson.com";
+}
+
+class ApiEndpoint {
+  static const String products = "/products";
 }

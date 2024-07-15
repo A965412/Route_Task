@@ -10,12 +10,12 @@ class Row_Widget extends StatelessWidget {
       children: [
         Search_Widget(),
         SizedBox(
-          width: 22,
+          width: 15,
         ),
         ImageIcon(
-          size: 30,
+          size: 25,
           AssetImage("assets/images/cart_icon.png"),
-          color: Color.fromARGB(255, 15, 46, 109),
+          color: Colors.white,
         ),
       ],
     );

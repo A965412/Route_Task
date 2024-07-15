@@ -1,18 +1,20 @@
-import 'package:routetask/Domain/Entity/Faliuers.dart';
-import 'package:routetask/Domain/Entity/ProductResponseEntity.dart';
+import '../../../Data/Model/ProductsResponse.dart';
 
 abstract class ProductsState {}
 
-class IntialProductState extends ProductsState {}
+class IntailProductState extends ProductsState {}
 
-class LoadingProductState extends ProductsState {}
+// ignore: must_be_immutable
+class SucessProductsState extends ProductsState {
+  ProductsResponse ProductsData;
 
-class ErrorproductState extends ProductsState {
-  Failures errorMassage;
-  ErrorproductState({required this.errorMassage});
+  SucessProductsState({required this.ProductsData});
 }
 
-class SucessproductState extends ProductsState {
-  ProductResponseEntity productResponseEntity;
-  SucessproductState({required this.productResponseEntity});
+class ErrorProductsState extends ProductsState {
+  String error;
+
+  ErrorProductsState({required this.error});
 }
+
+class LoadingProductsState extends ProductsState {}

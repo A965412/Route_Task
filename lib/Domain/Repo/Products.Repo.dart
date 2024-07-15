@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:routetask/Domain/Entity/Faliuers.dart';
-import 'package:routetask/Domain/Entity/ProductResponseEntity.dart';
 
-abstract class ProductsReposatiry {
-    Future<Either<Failures, ProductResponseEntity>> getProducts();
+import '../../Data/Failuers.dart';
+import '../../Data/Model/ProductsResponse.dart';
 
+abstract class ProductListRepo {
+  Future<Either<Failures, ProductsResponse>> getProductList();
 }
